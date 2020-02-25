@@ -1,0 +1,35 @@
+﻿@using ASPTask1.Helpers
+
+@if (ViewBag.Type == "result")
+{
+    <h3 class="navbar-item">Thanks for participation</h3>
+}
+
+else if (ViewBag.Type == "survey")
+{
+    using (Html.BeginForm("IndexResult", "Home", FormMethod.Post))
+    {
+        @Html.TextBox("Name", null, new {placeholder = "Enter your name", style = " width:300px"})
+        @Html.TextArea("Surname", null, new {placeholder = "Enter your surname", style = " width:300px"})
+        var vers = new List<string> {"2.3", "4.0", "4.2", "5.0", "6.0", "8.1", "10"};
+        var ems = new List<string> {"love", "don`t like", "hate"};
+        <div>
+            @foreach (var ver in vers)
+            {
+                <input type="checkbox" id="@ver" value="@ver" name="versions">
+                <label for="@ver">@ver</label>
+            }
+        </div>
+        <div>
+            <input type="radio" id="@ems[0]" value="@ems[0]" name="emotions" checked>
+            <label for="@ems[0]">@ems[0]</label>
+            @for (var i = 1; i < ems.Count; i++)
+            {
+                var ver = ems[i];
+                <input type="radio" id="@ver" value="@ver" name="emotions">
+                <label for="@ver">@ver</label>
+            }
+        </div>
+        <input type="submit" name="Button" value="Submit"/>
+    }
+}

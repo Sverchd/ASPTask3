@@ -1,0 +1,23 @@
+﻿@using ASPTask1.Helpers
+
+@model ViewModels.ViewSurvey
+
+@{
+    ViewBag.Title = "Result";
+}
+
+<h2>Your Result</h2>
+@{
+    var name = "Your name is: " + Model.name;
+    var surname = "Your surname is: " + Model.surname;
+    var versions = "Your favorite versions of an Android are:";
+    foreach (var ver in Model.andVers)
+    {
+        versions += " " + ver;
+    }
+    var emotions = "You " + Model.emotions + " it!";
+    var res = new List<string> {name, surname, versions, emotions};
+}
+
+@Html.CreateUl(res, "ulResult")
+@Html.CreateOl(res, "olResult")

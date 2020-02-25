@@ -1,0 +1,15 @@
+﻿@model ViewModels.ViewArticle
+@{
+    ViewBag.Title = "Article";
+}
+<h2>@Model.name</h2>
+<p>
+    @Model.content
+</p>
+<h3>@Model.date.ToString()</h3>
+@foreach (var hashtag in Model.hashtags.hashtags)
+{
+    <a class="hashtag">#@hashtag</a>
+}
+
+<h2>Article</h2>

@@ -1,0 +1,27 @@
+﻿@using ViewModels;
+@using ASPTask1.Helpers;
+
+@model ViewHomeResult
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<h2>@ViewBag.Title</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        @foreach (var ar in Model.articles)
+        {
+            <h2>@ar.name</h2>
+            <p>
+                @ar.ShortContent
+            </p>
+            <h3>@ar.date.ToString()</h3>
+            <p>
+                @Html.ActionLink("Learn more", "Article", "Article", new {year = ar.date.Year, month = ar.date.Month, title = ar.name}, new {artitle = ar.name})
+            </p>
+        }
+    </div>
+
+</div>
